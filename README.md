@@ -85,12 +85,25 @@ testOne translations replacements =
     I18Next.trf
         translations
         I18Next.Curly
-        "personalGreeting""
+        "personalGreeting"
         [ ( "name", replacements.name ) ]
 
 ```
 
 and a default implementation of `I18Next.Translations` in the sibling `Language.elm` module.
+
+```Language.elm
+defaultLanguage : I18Next.Translations
+defaultLanguage =
+    I18Next.fromTree
+         [ ( ""
+           , I18Next.object
+                [ ( "generalGreeting", I18Next.string "Hello there" ) 
+                , ( "personalGreeting", I18Next.string "Hello {{name}}" )
+                ]
+           )
+         ]
+```
 
 You can also nest translations by page
 ```
