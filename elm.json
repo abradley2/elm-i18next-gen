@@ -4,9 +4,6 @@
     "summary": "Generate type-safe translations for ChristophP/elm-i18next with elm-codegen",
     "license": "MIT",
     "version": "1.0.0",
-    "source-directories": [
-        "."
-    ],
     "exposed-modules": [
         "Generate"
     ],
@@ -14,6 +11,7 @@
     "dependencies": {
         "ChristophP/elm-i18next": "4.0.0 <= v < 5.0.0",
         "elm/core": "1.0.0 <= v < 2.0.0",
+        "elm/json": "1.0.0 <= v < 2.0.0",
         "elm/parser": "1.1.0 <= v < 2.0.0",
         "elm-community/maybe-extra": "5.3.0 <= v < 6.0.0",
         "mdgriffith/elm-codegen": "2.0.0 <= v < 3.0.0",
