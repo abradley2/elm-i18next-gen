@@ -68,7 +68,7 @@ A file translations file such as
 ```translations.json
 {
    "general greeting": "Hello there",
-   "personal greeting": "Hello {{name}}
+   "personal greeting": "Hello {{name}}"
 }
 ```
 
