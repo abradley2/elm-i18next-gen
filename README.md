@@ -21,8 +21,8 @@ import Json.Decode exposing (Value)
 main : Platform Value () ()
 main = 
     Generate.fromJson
-        I18Next.Gen.i18nextDecoder
-        (I18Next.Gen.jsonValueToFiles "MyCustomRoot")
+        I18NextGen.flagsDecoder
+        I18NextGen.files
 ```
 
 Then just run `elm-codegen` with `npx`, supplying the translations file as flags.
