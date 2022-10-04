@@ -80,8 +80,8 @@ generalGreeting translations =
     I18Next.tf translations "generalGreeting"
 
 
-testOne : List I18Next.Translations -> { name : String } -> String
-testOne translations replacements =
+personalGreeting : List I18Next.Translations -> { name : String } -> String
+personalGreeting translations replacements =
     I18Next.trf
         translations
         I18Next.Curly
