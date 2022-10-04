@@ -13,7 +13,7 @@ in a JSON file than put another 1-point ticket into your sprint will thank you f
 * Follow the ["Getting Started" guide from elm-codegen](https://github.com/mdgriffith/elm-codegen/blob/main/guide/GettingStarted.md)
 * In your initialized codegen project, `elm install abradley2/elm-i18next-gen`
 
-```
+```Generate.elm
 import I18Next.Gen
 import Gen.CodeGen.Generate as Generate
 import Json.Decode exposing (Value)
