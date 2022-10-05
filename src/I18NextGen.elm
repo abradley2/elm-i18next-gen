@@ -3,7 +3,6 @@ module I18NextGen exposing (Flags, files, flagsDecoder)
 import Dict exposing (Dict)
 import Elm
 import Elm.Annotation as Type
-import Gen.CodeGen.Generate as Generate
 import Gen.I18Next
 import Json.Decode as Decode exposing (Decoder, Value)
 import Maybe.Extra as Maybe
