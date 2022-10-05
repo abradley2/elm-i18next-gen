@@ -1,15 +1,4 @@
-module I18NextGen exposing (Flags, files, flagsDecoder)
-
-import Dict exposing (Dict)
-import Elm
-import Elm.Annotation as Type
-import Gen.I18Next
-import Json.Decode as Decode exposing (Decoder, Value)
-import Maybe.Extra as Maybe
-import Parser exposing ((|.), (|=), Parser)
-import ReCase
-import Set
-
+module I18NextGen exposing (files, flagsDecoder, Flags)
 
 {-| This module contains several functions useful in [elm-codegen](https://github.com/mdgriffith/elm-codegen) projects
 that allow you to generate
@@ -23,6 +12,18 @@ is likely more useful for consuming this module, so start there.
 @docs files, flagsDecoder, Flags
 
 -}
+
+import Dict exposing (Dict)
+import Elm
+import Elm.Annotation as Type
+import Gen.I18Next
+import Json.Decode as Decode exposing (Decoder, Value)
+import Maybe.Extra as Maybe
+import Parser exposing ((|.), (|=), Parser)
+import ReCase
+import Set
+
+
 varParser : Parser String
 varParser =
     Parser.succeed identity
