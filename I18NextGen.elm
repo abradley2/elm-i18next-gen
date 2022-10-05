@@ -1,4 +1,4 @@
-module I18NextGen exposing (files, flagsDecoder, Flags)
+module I18NextGen exposing (Flags, files, flagsDecoder)
 
 import Dict exposing (Dict)
 import Elm
@@ -12,6 +12,18 @@ import ReCase
 import Set
 
 
+{-| This module contains several functions useful in [elm-codegen](https://github.com/mdgriffith/elm-codegen) projects
+that allow you to generate
+type-safe code for use with [ChristophP/elm-18next](https://package.elm-lang.org/packages/ChristophP/elm-i18next/latest/).
+The documentation in this project's [README](https://github.com/abradley2/elm-i18next-gen/blob/master/README.md)
+is likely more useful for consuming this module, so start there.
+
+
+# Utilities
+
+@docs files, flagsDecoder, Flags
+
+-}
 varParser : Parser String
 varParser =
     Parser.succeed identity
@@ -57,12 +69,18 @@ popLast =
     List.reverse >> List.drop 1 >> List.reverse
 
 
+{-| The type for parsed Flags from `flagsDecoder` that will be needed to generate the resulting code.
+-}
 type alias Flags =
     { node : Node
     , formatted : Dict String String
     }
 
 
+{-| A decoder that consumes a JSON object that conforms to the [I18Next v2 specification](https://www.i18next.com/misc/json-format#i18next-json-v2).
+This is just a simple object with string keys and string values, that may contain nested objects. The delimiter to replacement placeholders must be
+the "double curly" format {{like so}}.
+-}
 flagsDecoder : Decoder Flags
 flagsDecoder =
     Decode.map2
@@ -71,6 +89,9 @@ flagsDecoder =
         (Decode.map formatNode nodeDecoder)
 
 
+{-| Using the decoded flags (from `flagsDecoder`), this function will generate a list of `Elm.File`'s
+to be used in your main `Generate.elm` function for [elm-codegen](https://github.com/mdgriffith/elm-codegen)
+-}
 files : Flags -> List Elm.File
 files flags =
     let

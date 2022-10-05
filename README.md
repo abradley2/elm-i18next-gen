@@ -25,9 +25,12 @@ main =
         I18NextGen.files
 ```
 
-Then just run `elm-codegen` with `npx`, supplying the translations file as flags.
+Consuming the module in this way allows you to have different code generation paths depending on dynamic flags. But if you're only 
+generating code for translations, the above is sufficient.
 
-`npx elm-codegen run --flags-from="path/to/translations/en.json" --output="path/to/myapp/src`
+Then just run `elm-codegen`, supplying the translations file as flags.
+
+`npx elm-codegen run --flags-from="path/to/translations/en.json"`
 
 ## Example
 
@@ -35,33 +38,36 @@ You should have a root directory that contains your Elm application. From this d
 `npx elm-codegen init` and have something resembling the following:
 
 ```
-my-project/
-|--elm-app/
+elm-app/
+|--assets/
 |  |--translations.en.json
-|  |--src/
-|     |--Main.elm
-|
+|--src/
+|  |--Main.elm
 |--codegen/
    |--Generate.elm
 ```
 
 When you have followed the steps in the **Usage** section, running-
+
 ```
-npx elm-codegen run --flags-from="elm-app/translations.en.json --output="elm-app/src"
+npx elm-codegen run --flags-from="assets/translations.en.json"
 ```
-from the **my-project** root should produce:
+
+-from the **my-project** root should produce:
 
 ```
 my-project/
-|--elm-app/
+elm-app/
+|--assets/
 |  |--translations.en.json
-|  |--src/
-|     |--Main.elm
-|     |--Language.elm
-|     |--Translations.elm
-|
+|--src/
+|  |--Main.elm
 |--codegen/
-   |--Generate.elm
+|  |--Generate.elm
+|--generated/
+   |--Language.elm
+   |--Translations.elm
+   |--Translations/   
 ```
 
 A file translations file such as
@@ -113,7 +119,7 @@ You can also nest translations by page
 }
 ```
 
-This will create sub-modules in a `Translations` directory.
+This will create sub-modules in the `Translations` directory.
 
 ## Recommended Pattern
 
