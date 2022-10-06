@@ -70,7 +70,7 @@ elm-app/
    |--Translations/   
 ```
 
-A file translations file such as
+A translations file like this, conforming to the [I18Next V2 specification](https://www.i18next.com/misc/json-format#i18next-json-v2):
 ```translations.json
 {
    "general greeting": "Hello there",
@@ -78,7 +78,7 @@ A file translations file such as
 }
 ```
 
-will generate
+-will generate:
 
 ```Translations.elm
 generalGreeting : List I18Next.Translations -> String
@@ -96,7 +96,7 @@ personalGreeting translations replacements =
 
 ```
 
-and a default implementation of `I18Next.Translations` in the sibling `Language.elm` module.
+-and a default implementation of `I18Next.Translations` in the sibling `Language.elm` module.
 
 ```Language.elm
 defaultLanguage : I18Next.Translations
@@ -111,7 +111,7 @@ defaultLanguage =
          ]
 ```
 
-You can also nest translations by page
+You can also nest translations by page as the [I18Next V2 specification](https://www.i18next.com/misc/json-format#i18next-json-v2) allows.
 ```
 {
    "home": { ... },
@@ -124,7 +124,7 @@ This will create sub-modules in the `Translations` directory.
 ## Recommended Pattern
 
 It is recommended that you only run this codegen for a single default language. Part of the output
-includes a `defaultTranslations` export of the `I18Next.Translations` type. For all your translations
+includes a `defaultLanguage` export of the `I18Next.Translations` type. For all your translations
 that are not part of your default language, use `I18Next.translationsDecoder` as you normally would.
 
 ## Thanks

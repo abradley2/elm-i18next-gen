@@ -69,9 +69,13 @@ popLast =
     List.reverse >> List.drop 1 >> List.reverse
 
 
-{-| The type for parsed Flags from `flagsDecoder` that will be needed to generate the resulting code.
+{-| The opaque type for parsed Flags from `flagsDecoder` that will be needed to generate the resulting code.
 -}
-type alias Flags =
+type Flags
+    = Flags Flags_
+
+
+type alias Flags_ =
     { node : Node
     , formatted : Dict String String
     }
@@ -84,16 +88,17 @@ the "double curly" format {{like so}}.
 flagsDecoder : Decoder Flags
 flagsDecoder =
     Decode.map2
-        Flags
+        Flags_
         nodeDecoder
         (Decode.map formatNode nodeDecoder)
+        |> Decode.andThen (Flags >> Decode.succeed)
 
 
 {-| Using the decoded flags (from `flagsDecoder`), this function will generate a list of `Elm.File`'s
 to be used in your main `Generate.elm` function for [elm-codegen](https://github.com/mdgriffith/elm-codegen)
 -}
 files : Flags -> List Elm.File
-files flags =
+files (Flags flags) =
     let
         helperFiles : List Elm.File
         helperFiles =
