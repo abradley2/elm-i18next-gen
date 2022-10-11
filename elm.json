@@ -3,7 +3,7 @@
     "name": "abradley2/elm-i18next-gen",
     "summary": "Generate type-safe translations for ChristophP/elm-i18next with elm-codegen",
     "license": "MIT",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "exposed-modules": [
         "I18NextGen"
     ],

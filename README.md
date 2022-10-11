@@ -53,10 +53,9 @@ When you have followed the steps in the **Usage** section, running-
 npx elm-codegen run --flags-from="assets/translations.en.json"
 ```
 
--from the **my-project** root should produce:
+-from your **elm-app** root should produce:
 
 ```
-my-project/
 elm-app/
 |--assets/
 |  |--translations.en.json
