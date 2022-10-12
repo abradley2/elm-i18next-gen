@@ -13,7 +13,7 @@ in a JSON file than put another 1-point ticket into your sprint will thank you f
 * Follow the ["Getting Started" guide from elm-codegen](https://github.com/mdgriffith/elm-codegen/blob/main/guide/GettingStarted.md)
 * In your initialized codegen project, `elm install abradley2/elm-i18next-gen`
 
-```Generate.elm
+```elm
 import I18Next.Gen
 import Gen.CodeGen.Generate as Generate
 import Json.Decode exposing (Value)
@@ -70,7 +70,7 @@ elm-app/
 ```
 
 A translations file like this, conforming to the [I18Next V2 specification](https://www.i18next.com/misc/json-format#i18next-json-v2):
-```translations.json
+```json
 {
    "general greeting": "Hello there",
    "personal greeting": "Hello {{name}}"
@@ -79,7 +79,7 @@ A translations file like this, conforming to the [I18Next V2 specification](http
 
 -will generate:
 
-```Translations.elm
+```elm
 generalGreeting : List I18Next.Translations -> String
 generalGreeting translations =
     I18Next.tf translations "generalGreeting"
@@ -97,7 +97,7 @@ personalGreeting translations replacements =
 
 -and a default implementation of `I18Next.Translations` in the sibling `Language.elm` module.
 
-```Language.elm
+```elm
 defaultLanguage : I18Next.Translations
 defaultLanguage =
     I18Next.fromTree
