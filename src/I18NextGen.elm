@@ -95,7 +95,7 @@ flagsDecoder =
 
 
 {-| Using the decoded flags (from `flagsDecoder`), this function will generate a list of `Elm.File`'s
-to be used in your main `Generate.elm` function for [elm-codegen](https://github.com/mdgriffith/elm-codegen)
+to be used in your main `Generate.elm` function for [elm-codegen](https://github.com/mdgriffith/elm-codegen).
 -}
 files : Flags -> List Elm.File
 files (Flags flags) =
