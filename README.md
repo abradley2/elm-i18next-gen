@@ -8,25 +8,21 @@ If you have a large Elm application in a business setting, you should strongly c
 even if you aren't considering adding extra languages to your app. Your project manager who would much rather change a line
 in a JSON file than put another 1-point ticket into your sprint will thank you for it.
 
-## CLI Usage (Recommended)
-
-Use the cli via `npx @abradley2/elm-i18next-gen -- --flags-from="path/to/translations.en.json"`
-to generate the code for your translations.
-
-This simply proxies to `elm-codegen` without having to add a `codegen` directory to your current
-project.
-
 ## Elm Codegen Usage
 
-* Follow the ["Getting Started" guide from elm-codegen](https://github.com/mdgriffith/elm-codegen/blob/main/guide/GettingStarted.md)
-* In your initialized codegen project, `elm install abradley2/elm-i18next-gen`
+* Run `npx elm-codegen init` as detailed in the ["Getting Started" guide from elm-codegen](https://github.com/mdgriffith/elm-codegen/blob/main/guide/GettingStarted.md)
+* In your initialized codegen project (`cd codegen`), run `elm install abradley2/elm-i18next-gen`
+
+Your **Generate.elm** file should look something like this:
 
 ```elm
-import I18Next.Gen
+module Generate exposing (main)
+
+import I18NextGen
 import Gen.CodeGen.Generate as Generate
 import Json.Decode exposing (Value)
 
-main : Platform Value () ()
+main : Program Value () ()
 main = 
     Generate.fromJson
         I18NextGen.flagsDecoder
@@ -38,7 +34,7 @@ generating code for translations, the above is sufficient.
 
 Then just run `elm-codegen`, supplying the translations file as flags.
 
-`npx elm-codegen run --flags-from="path/to/translations/en.json"`
+In your project's main directory, run `npx elm-codegen run --flags-from="path/to/translations/en.json"`
 
 ## Example
 
