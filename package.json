@@ -1,0 +1,20 @@
+{
+  "name": "@abradley2/elm-i18next-gen",
+  "version": "1.0.0",
+  "description": "Generate type-safe translations for Elm",
+  "main": "index.js",
+  "bin": "./node_modules/.bin/elm-codegen",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abradley2/elm-i18next-gen.git"
+  },
+  "author": "Tony Bradley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abradley2/elm-i18next-gen/issues"
+  },
+  "homepage": "https://github.com/abradley2/elm-i18next-gen#readme",
+  "dependencies": {
+    "elm-codegen": "^0.2.0"
+  }
+}

@@ -8,7 +8,15 @@ If you have a large Elm application in a business setting, you should strongly c
 even if you aren't considering adding extra languages to your app. Your project manager who would much rather change a line
 in a JSON file than put another 1-point ticket into your sprint will thank you for it.
 
-## Usage
+## CLI Usage (Recommended)
+
+Use the cli via `npx @abradley2/elm-i18next-gen -- --flags-from="path/to/translations.en.json"`
+to generate the code for your translations.
+
+This simply proxies to `elm-codegen` without having to add a `codegen` directory to your current
+project.
+
+## Elm Codegen Usage
 
 * Follow the ["Getting Started" guide from elm-codegen](https://github.com/mdgriffith/elm-codegen/blob/main/guide/GettingStarted.md)
 * In your initialized codegen project, `elm install abradley2/elm-i18next-gen`
