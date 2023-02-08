@@ -17,7 +17,7 @@ import Dict exposing (Dict)
 import Elm
 import Elm.Annotation as Type
 import Gen.I18Next
-import Json.Decode as Decode exposing (Decoder, Value)
+import Json.Decode as Decode exposing (Decoder)
 import Maybe.Extra as Maybe
 import Parser exposing ((|.), (|=), Parser)
 import ReCase
@@ -110,7 +110,7 @@ files (Flags flags) =
                             filePath =
                                 String.split "." k
                                     |> popLast
-                                    |> List.map (ReCase.recase ReCase.ToTitle)
+                                    |> List.map (ReCase.recase ReCase.ToPascal)
                                     |> (::) "Translations"
 
                             methodName =
