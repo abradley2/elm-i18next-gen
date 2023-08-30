@@ -1,0 +1,15 @@
+{
+  "name": "@abradley2/elm-i18next-gen",
+  "version": "1.0.0",
+  "description": "An elm-codegen library for creating type-safe helper methods for the excellent ChristophP/elm-i18next package.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "elm-codegen": "^0.5.0",
+    "minimist": "^1.2.8"
+  }
+}

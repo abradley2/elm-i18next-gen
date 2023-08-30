@@ -69,7 +69,7 @@ popLast =
     List.reverse >> List.drop 1 >> List.reverse
 
 
-{-| The opaque type for parsed Flags from `flagsDecoder` that will be needed to generate the resulting code.
+{-| The opaque type for parsed Flags from `flagsDecoder` that will be needed to generate the resulting code
 -}
 type Flags
     = Flags Flags_

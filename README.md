@@ -10,70 +10,19 @@ in a JSON file than put another 1-point ticket into your sprint will thank you f
 
 ## Elm Codegen Usage
 
-* Run `npx elm-codegen init` as detailed in the ["Getting Started" guide from elm-codegen](https://github.com/mdgriffith/elm-codegen/blob/main/guide/GettingStarted.md)
-* In your initialized codegen project (`cd codegen`), run `elm install abradley2/elm-i18next-gen`
 
-Your **Generate.elm** file should look something like this:
-
-```elm
-module Generate exposing (main)
-
-import I18NextGen
-import Gen.CodeGen.Generate as Generate
-import Json.Decode exposing (Value)
-
-main : Program Value () ()
-main = 
-    Generate.fromJson
-        I18NextGen.flagsDecoder
-        I18NextGen.files
-```
-
-Consuming the module in this way allows you to have different code generation paths depending on dynamic flags. But if you're only 
-generating code for translations, the above is sufficient.
-
-Then just run `elm-codegen`, supplying the translations file as flags.
-
-In your project's main directory, run `npx elm-codegen run --flags-from="path/to/translations/en.json"`
-
-## Example
-
-You should have a root directory that contains your Elm application. From this directory you've called
-`npx elm-codegen init` and have something resembling the following:
+In your project that consumes the generated code, you should `elm install ChristophP/elm-i18next`. 
+This library generates code for usage with `ChristophP/elm-i18next`.
 
 ```
-elm-app/
-|--assets/
-|  |--translations.en.json
-|--src/
-|  |--Main.elm
-|--codegen/
-   |--Generate.elm
+npx @abradley2/elm-i18next-gen --output=generated --translations=relative/path/to/translations.json
 ```
 
-When you have followed the steps in the **Usage** section, running-
+This will create a directory "generated" containing a `Language.elm` file and a `Translations.elm`
+file, along with `Translations` sub modules based on the structure of your translations file.
 
-```
-npx elm-codegen run --flags-from="assets/translations.en.json"
-```
-
--from your **elm-app** root should produce:
-
-```
-elm-app/
-|--assets/
-|  |--translations.en.json
-|--src/
-|  |--Main.elm
-|--codegen/
-|  |--Generate.elm
-|--generated/
-   |--Language.elm
-   |--Translations.elm
-   |--Translations/   
-```
-
-A translations file like this, conforming to the [I18Next V2 specification](https://www.i18next.com/misc/json-format#i18next-json-v2):
+A translations file like should look something like this, 
+conforming to the [I18Next V2 specification](https://www.i18next.com/misc/json-format#i18next-json-v2):
 ```json
 {
    "general greeting": "Hello there",
@@ -81,7 +30,7 @@ A translations file like this, conforming to the [I18Next V2 specification](http
 }
 ```
 
--will generate:
+This will generate the following:
 
 ```elm
 generalGreeting : List I18Next.Translations -> String
@@ -106,7 +55,7 @@ defaultLanguage : I18Next.Translations
 defaultLanguage =
     I18Next.fromTree
          [ ( ""
-           , I18Next.object
+           , I18Next.object 
                 [ ( "generalGreeting", I18Next.string "Hello there" ) 
                 , ( "personalGreeting", I18Next.string "Hello {{name}}" )
                 ]
@@ -122,7 +71,7 @@ You can also nest translations by page as the [I18Next V2 specification](https:/
 }
 ```
 
-This will create sub-modules in the `Translations` directory.
+This will create the sub-modules in the `Translations` directory.
 
 ## Recommended Pattern
 
