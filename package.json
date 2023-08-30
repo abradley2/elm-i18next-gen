@@ -1,8 +1,9 @@
 {
   "name": "@abradley2/elm-i18next-gen",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "An elm-codegen library for creating type-safe helper methods for the excellent ChristophP/elm-i18next package.",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
