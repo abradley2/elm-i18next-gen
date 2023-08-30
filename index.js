@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const CodeGen = require('elm-codegen')
 const path = require('path')
 const fs = require('fs')
